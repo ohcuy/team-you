@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct CustomProgressView: View {
+struct CustomProgressBar: View {
     @State var progress = 0.0
     
     var body: some View {

@@ -13,7 +13,7 @@ struct WriteStep2View: View {
                     viewModel.closeFlow()
                 })
             
-            CustomProgressView()
+            CustomProgressBar()
             
             VStack(alignment: .leading, spacing: 24) {
                     VStack(alignment: .leading, spacing: 4) {
