@@ -50,7 +50,7 @@ struct WriteStep4View: View {
                     TextField(
                         "",
                         text: $content2,
-                        prompt: Text("그 실패에서 무엇을 배웠나요?")
+                        prompt: Text("이 실패를 통해 무엇을 배웠나요?")
                             .foregroundColor(.gray4)
                     )
                     .font(.system(size: 14))
