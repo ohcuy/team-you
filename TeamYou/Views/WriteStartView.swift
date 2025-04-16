@@ -7,7 +7,7 @@ struct WriteStartView: View {
     private var subText = "언제, 어떤 일이었는지. 그리고 그때의 마음까지.\n지금 이 기록은, 나를 위한 첫 번째 정리예요."
     
     var body: some View {
-        VStack(alignment: .center, spacing: 24) {
+        VStack() {
             CustomNavigationBar(
                 showRightButton: true,
                 rightAction: { dismiss() })
@@ -48,4 +48,8 @@ struct WriteStartView: View {
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
     }
+}
+
+#Preview {
+    WriteStartView()
 }
