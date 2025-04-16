@@ -2,17 +2,12 @@ import SwiftUI
 
 struct SelectableCardList: View {
     var body: some View {
-        VStack {
+        VStack(spacing: 12) {
             ForEach(0..<4) { _ in
-                SelectableCardView()
+                SelectableCard()
             }
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, 20)
+        .frame(maxWidth: .infinity)
         .background(.gray1)
     }
-}
-
-#Preview {
-    SelectableCardList()
 }

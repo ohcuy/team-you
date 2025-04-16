@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct RecordCard: View {
-    var category: String
-    var emotion: String
+    @State var category: String
+    @State var emotion: String
     
     var body: some View {
         HStack {
@@ -14,15 +14,12 @@ struct RecordCard: View {
             Spacer()
             
             Image(systemName: "chevron.right")
+                .font(.system(.body, weight: .light))
                 .foregroundColor(.white)
         }
         .padding(.horizontal, 16)
         .background(.gray3)
         .cornerRadius(8)
         .frame(maxWidth: .infinity)
-        }
     }
-
-#Preview {
-    RecordCard(category: "🤷 뭐라 말 못할 실패", emotion: "🫠 당황스러웠어요")
 }

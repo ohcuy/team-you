@@ -7,35 +7,29 @@ struct MainRecordList: View {
     @State private var selectedRecord: Record?
     
     var recordList: [Record]
-
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading) {
                 Text("\(month)월 \(day)일의 기록")
                     .foregroundColor(.alabaster)
                     .font(.system(size: 18, weight: .medium))
-                    .padding(.leading, 20)
-                
+                    .padding(.bottom, 16)
                 if isEmptyRecordList {
-                    ZStack {
+                    HStack(alignment: .center) {
                         Text("아직 기록을 작성하지 않았어요 🥲")
                             .foregroundStyle(.white)
                     }
-                    .frame(maxWidth: .infinity,
-                           maxHeight: .infinity,
-                           alignment: .center)
+                    .frame(maxWidth: .infinity, alignment: .center)
                     .background(.gray1)
                 } else {
-                    List(recordList, id: \.id) { record in
-                        RecordCard(category: record.category, emotion: record.emotion)
+                    ForEach(recordList, id: \.id) { record in
+                        RecordCard(category: record.situation, emotion: record.emotion)
+                            .padding(.bottom, 16)
                             .onTapGesture {
                                 selectedRecord = record
                             }
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
                     }
-                    .listStyle(PlainListStyle())
-                    .scrollContentBackground(.hidden)
                 }
             }
             .background(.gray1)
@@ -45,9 +39,4 @@ struct MainRecordList: View {
             }
         }
     }
-}
-
-
-#Preview {
-    MainRecordList(recordList: Record.sampleData)
 }
