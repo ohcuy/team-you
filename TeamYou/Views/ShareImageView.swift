@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ShareImageView: View {
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: WriteFlowViewModel
     @State private var isShareSheetOpen = false
     
     var body: some View {
@@ -10,7 +10,9 @@ struct ShareImageView: View {
                 VStack {
                     CustomNavigationBar(
                         showRightButton: true,
-                        rightAction: { dismiss() })
+                        rightAction: {
+                            viewModel.closeFlow()
+                        })
                     
                     VStack(spacing: 36) {
                         VStack(spacing: 4) {

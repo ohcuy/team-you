@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct MainView: View {
+    @StateObject private var writeVM = WriteFlowViewModel()
     @State private var year = "2025"
     @State private var month = "4"
     @State private var isLaunching = true
@@ -53,7 +54,7 @@ struct MainView: View {
                     
                     VStack {
                         Button(action: {
-                            self.isShownFullScreenCover.toggle()
+                            writeVM.isPresented = true
                         }) {
                             Text("기록하기")
                                 .font(.body)
@@ -68,8 +69,9 @@ struct MainView: View {
                         .padding(.top, 12)
                         .background(.gray1)
                     }
-                    .fullScreenCover(isPresented: $isShownFullScreenCover) {
+                    .fullScreenCover(isPresented: $writeVM.isPresented) {
                         WriteView()
+                            .environmentObject(writeVM)
                     }
                 }
                 .background(.gray1)

@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WriteStartView: View {
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: WriteFlowViewModel
     
     private var mainText = "실패의 순간을\n살짝 떠올려 볼까요?"
     private var subText = "언제, 어떤 일이었는지. 그리고 그때의 마음까지.\n지금 이 기록은, 나를 위한 첫 번째 정리예요."
@@ -10,7 +10,9 @@ struct WriteStartView: View {
         VStack() {
             CustomNavigationBar(
                 showRightButton: true,
-                rightAction: { dismiss() })
+                rightAction: {
+                    viewModel.closeFlow()
+                })
             
             Spacer()
             
@@ -29,7 +31,7 @@ struct WriteStartView: View {
             
             Spacer()
             
-            NavigationLink(destination: WriteStep1View()){
+            NavigationLink(destination: WriteStep1View()) {
                 Text("시작하기")
                     .font(.body)
                     .bold()
@@ -48,8 +50,4 @@ struct WriteStartView: View {
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
     }
-}
-
-#Preview {
-    WriteStartView()
 }

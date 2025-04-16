@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct WriteStep3View: View {
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var viewModel: WriteFlowViewModel
     @State var progress = 0.0
     
     var body: some View {
@@ -9,7 +9,9 @@ struct WriteStep3View: View {
             CustomNavigationBar(
                 showLeftButton: true,
                 showRightButton: true,
-                rightAction: { dismiss() })
+                rightAction: {
+                    viewModel.closeFlow()
+                })
             
             CustomProgressView()
             
