@@ -9,8 +9,11 @@ struct WriteStep3View: View {
             CustomNavigationBar(
                 showLeftButton: true,
                 showRightButton: true,
+                leftAction: {
+                    viewModel.previousStep()
+                },
                 rightAction: {
-                    viewModel.closeFlow()
+                    viewModel.close()
                 })
             
             CustomProgressBar()
@@ -31,11 +34,13 @@ struct WriteStep3View: View {
             
             Spacer()
             
-            NavigationLink(destination: WriteStep4View()) {
+            Button (action: {
+                viewModel.nextStep()
+            }) {
                 Text("다음")
                     .font(.body)
                     .bold()
-                    .padding()
+                    .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
                     .foregroundColor(.gray1)
                     .background(.accent)

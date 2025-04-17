@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct WriteFinishView: View {
+    @EnvironmentObject var viewModel: WriteFlowViewModel
     private var mainText = "무거웠던 마음\n이제 조금 가벼워졌나요?"
     private var subText = "오늘도 잘 털어냈어요. 내일의 나에게, 파이팅!"
     
@@ -23,16 +24,17 @@ struct WriteFinishView: View {
             
             Spacer()
             
-            NavigationLink(destination: ShareImageView()) {
+            Button (action: {
+                viewModel.nextStep()
+            }) {
                 Text("기록완료")
                     .font(.body)
                     .bold()
-                    .padding()
+                    .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
                     .foregroundColor(.gray1)
                     .background(.accent)
                     .cornerRadius(48)
-                    .padding(.horizontal, 16)
             }
             .padding(.top, 12)
             .background(.gray1)

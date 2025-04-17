@@ -3,7 +3,6 @@ import SwiftUI
 struct WriteStep4View: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
     @State var progress = 0.0
-    
     @State var content1 = ""
     @State var content2 = ""
     @State var content3 = ""
@@ -13,8 +12,11 @@ struct WriteStep4View: View {
             CustomNavigationBar(
                 showLeftButton: true,
                 showRightButton: true,
+                leftAction: {
+                    viewModel.previousStep()
+                },
                 rightAction: {
-                    viewModel.closeFlow()
+                    viewModel.close()
                 })
             
             CustomProgressBar()
@@ -85,11 +87,13 @@ struct WriteStep4View: View {
             
             Spacer()
             
-            NavigationLink(destination: WriteFinishView()) {
+            Button (action: {
+                viewModel.nextStep()
+            }) {
                 Text("다음")
                     .font(.body)
                     .bold()
-                    .padding()
+                    .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
                     .foregroundColor(.gray1)
                     .background(.accent)
@@ -97,6 +101,7 @@ struct WriteStep4View: View {
             }
             .padding(.top, 12)
             .background(.gray1)
+            
         }
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

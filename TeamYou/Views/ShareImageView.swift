@@ -11,7 +11,7 @@ struct ShareImageView: View {
                     CustomNavigationBar(
                         showRightButton: true,
                         rightAction: {
-                            viewModel.closeFlow()
+                            viewModel.close()
                         })
                     
                     VStack(spacing: 36) {
