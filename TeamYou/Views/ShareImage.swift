@@ -37,7 +37,7 @@ struct ShareImage: View {
                                 .background(.alabaster)
                         }
                         
-                        Text("발표자료를 거의 다 만들었는데 저장을 못 해서 날렸다. 멘붕 왔지만 다시 만들고 겨우 끝냈다.")
+                        Text(viewModel.content1)
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
                             .fixedSize(horizontal: false, vertical: true)
@@ -50,7 +50,7 @@ struct ShareImage: View {
                         Text("그 실패에서 무엇을 배웠냐면..")
                             .font(.system(size: 16, weight: .bold))
                         
-                        Text("발표자료를 거의 다 만들었는데 저장을 못 해서 날렸다. 멘붕 왔지만 다시 만들고 겨우 끝냈다.")
+                        Text(viewModel.content2)
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
                             .fixedSize(horizontal: false, vertical: true)
@@ -62,7 +62,7 @@ struct ShareImage: View {
                     VStack(alignment:.leading, spacing: 6) {
                         Text("다시 시도한다면 다음에는..")
                             .font(.system(size: 16, weight: .bold))
-                        Text("발표자료를 거의 다 만들었는데 저장을 못 해서 날렸다. 멘붕 왔지만 다시 만들고 겨우 끝냈다.")
+                        Text(viewModel.content3)
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
                             .fixedSize(horizontal: false, vertical: true)
