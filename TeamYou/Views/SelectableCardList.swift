@@ -16,9 +16,28 @@ struct SelectableCardList: View {
     var body: some View {
         VStack(spacing: 12) {
             ForEach(filteredItems) { item in
-                SelectableCard(item: item)
-            }        }
-        .frame(maxWidth: .infinity)
-        .background(.gray1)
+                SelectableCard(
+                    item: item,
+                    isSelected: {
+                        switch type {
+                        case .situation:
+                            return viewModel.selectedSituation?.id == item.id
+                        case .emotion:
+                            return viewModel.selectedEmotion?.id == item.id
+                        }
+                    }(),
+                    onTap: {
+                        switch type {
+                        case .situation:
+                            viewModel.selectedSituation = item
+                        case .emotion:
+                            viewModel.selectedEmotion = item
+                        }
+                    }
+                )
+            }
+            .frame(maxWidth: .infinity)
+            .background(.gray1)
+        }
     }
 }

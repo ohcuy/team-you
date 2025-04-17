@@ -1,14 +1,16 @@
 import SwiftUI
 
 struct ShareImage: View {
+    @EnvironmentObject var viewModel: WriteFlowViewModel
+    
     var body: some View {
         VStack {
             VStack(alignment: .center, spacing: 16) {
                 VStack {
-                    Text("25년 4월 16일")
+                    Text(formattedDate(viewModel.selectedDate ?? Date()))
                         .font(.system(size: 24, weight: .bold))
                         .foregroundStyle(.accent)
-
+                    
                     Image("StoryImageAsset")
                 }
                 .padding(.vertical, 12)
@@ -21,13 +23,13 @@ struct ShareImage: View {
                             .font(.system(size: 16, weight: .bold))
                         
                         HStack(spacing: 8) {
-                            Text("📚 해보려 했는데")
+                            Text("\(viewModel.selectedSituation?.emoji ?? "")\(viewModel.selectedSituation?.mainText ?? "")")
                                 .font(.system(size: 14, weight: .semibold))
                                 .foregroundStyle(.gray1)
                                 .frame(alignment: .topLeading)
                                 .padding(4)
                                 .background(.alabaster)
-                            Text("😤 속상했어요")
+                            Text("\(viewModel.selectedEmotion?.emoji ?? "")\(viewModel.selectedEmotion?.mainText ?? "")")
                                 .font(.system(size: 14, weight: .semibold))
                                 .foregroundStyle(.gray1)
                                 .frame(alignment: .topLeading)
@@ -38,6 +40,7 @@ struct ShareImage: View {
                         Text("발표자료를 거의 다 만들었는데 저장을 못 해서 날렸다. 멘붕 왔지만 다시 만들고 겨우 끝냈다.")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
+                            .fixedSize(horizontal: false, vertical: true)
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                             .padding(4)
                             .background(.alabaster)
@@ -46,9 +49,11 @@ struct ShareImage: View {
                     VStack(alignment:.leading, spacing: 6) {
                         Text("그 실패에서 무엇을 배웠냐면..")
                             .font(.system(size: 16, weight: .bold))
+                        
                         Text("발표자료를 거의 다 만들었는데 저장을 못 해서 날렸다. 멘붕 왔지만 다시 만들고 겨우 끝냈다.")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
+                            .fixedSize(horizontal: false, vertical: true)
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                             .padding(4)
                             .background(.alabaster)
@@ -60,6 +65,7 @@ struct ShareImage: View {
                         Text("발표자료를 거의 다 만들었는데 저장을 못 해서 날렸다. 멘붕 왔지만 다시 만들고 겨우 끝냈다.")
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
+                            .fixedSize(horizontal: false, vertical: true)
                             .frame(maxWidth: .infinity, alignment: .topLeading)
                             .padding(4)
                             .background(.alabaster)

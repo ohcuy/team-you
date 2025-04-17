@@ -2,6 +2,7 @@ import SwiftUI
 
 struct WriteStep1View: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
+    @State var hasSelectedDate = false
     @State var date = Date()
     @State var progress = 0.0
     
@@ -30,8 +31,16 @@ struct WriteStep1View: View {
                 }
                 
                 DatePicker(
-                    "Start Date",
-                    selection: $date,
+                    "",
+                    selection: Binding(
+                        get: {
+                            viewModel.selectedDate ?? Date()
+                        },
+                        set: { newDate in
+                            viewModel.selectedDate = newDate
+                            hasSelectedDate = true
+                        }
+                    ),
                     displayedComponents: [.date]
                 )
                 .padding(8)
@@ -51,10 +60,10 @@ struct WriteStep1View: View {
                     .bold()
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.gray1)
-                    .background(.accent)
-                    .cornerRadius(48)
+                    .foregroundColor(!hasSelectedDate ? Color.gray4 : Color.gray1)
+                    .background(!hasSelectedDate ? Color.gray3 : Color.accent)                    .cornerRadius(48)
             }
+            .disabled(!hasSelectedDate)
             .padding(.top, 12)
             .background(.gray1)
         }
@@ -63,8 +72,4 @@ struct WriteStep1View: View {
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
     }
-}
-
-#Preview {
-    WriteStep1View()
 }

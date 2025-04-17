@@ -23,13 +23,13 @@ struct WriteStep4View: View {
             
             VStack(alignment: .leading, spacing: 12) {
                 HStack(alignment: .center) {
-                    Text("4월 15일")
+                    Text(formattedDate(viewModel.selectedDate ?? Date()))
                     
                     Spacer()
                     
                     HStack {
-                        Text("📚 해보려 했는데")
-                        Text("😤 속상했어요")
+                        Text("\(viewModel.selectedSituation?.emoji ?? "")\(viewModel.selectedSituation?.mainText ?? "")")
+                        Text("\(viewModel.selectedEmotion?.emoji ?? "")\(viewModel.selectedEmotion?.mainText ?? "")")
                     }
                 }
                 .foregroundStyle(.alabaster)
@@ -95,17 +95,23 @@ struct WriteStep4View: View {
                     .bold()
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.gray1)
-                    .background(.accent)
+                    .foregroundColor(content1.isEmpty || content2.isEmpty || content3.isEmpty ? Color.gray4 : Color.gray1)
+                    .background(content1.isEmpty || content2.isEmpty || content3.isEmpty ? Color.gray3 : Color.accent)
                     .cornerRadius(48)
             }
+            .disabled(content1.isEmpty || content2.isEmpty || content3.isEmpty)
             .padding(.top, 12)
             .background(.gray1)
-            
         }
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
     }
+}
+
+func formattedDate(_ date: Date) -> String {
+    let formatter = DateFormatter()
+    formatter.dateFormat = "M월 d일"
+    return formatter.string(from: date)
 }

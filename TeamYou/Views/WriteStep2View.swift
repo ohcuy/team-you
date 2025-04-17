@@ -42,10 +42,11 @@ struct WriteStep2View: View {
                     .bold()
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(.gray1)
-                    .background(.accent)
+                    .foregroundColor(viewModel.selectedSituation == nil ? Color.gray4 : Color.gray1)
+                    .background(viewModel.selectedSituation == nil ? Color.gray3 : Color.accent)
                     .cornerRadius(48)
             }
+            .disabled(viewModel.selectedSituation == nil)
             .padding(.top, 12)
             .background(.gray1)
         }
@@ -54,8 +55,4 @@ struct WriteStep2View: View {
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
     }
-}
-
-#Preview {
-    WriteStep2View()
 }
