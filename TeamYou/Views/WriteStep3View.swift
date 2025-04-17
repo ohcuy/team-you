@@ -29,7 +29,7 @@ struct WriteStep3View: View {
                         .fontWeight(.medium)
                         .foregroundStyle(.alabaster)
                 }
-                SelectableCardList()
+                SelectableCardList(type: .emotion)
             }
             
             Spacer()

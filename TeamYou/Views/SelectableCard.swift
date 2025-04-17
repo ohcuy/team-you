@@ -1,20 +1,18 @@
 import SwiftUI
 
 struct SelectableCard: View {
-    @State var emoji = "🤷"
-    @State var mainText = "뭐라 말 못할 실패"
-    @State var secondaryText = "이유는 모르겠지만... 그냥 실패한 날"
+    let item: SelectableItem
     
     var body: some View {
         HStack(alignment:.center) {
-            Text(emoji)
+            Text(item.emoji)
                 .font(.system(size: 24))
             VStack(alignment: .leading) {
-                Text(mainText)
+                Text(item.mainText)
                     .font(.callout)
                     .foregroundStyle(.white)
                     .fontWeight(.semibold)
-                Text(secondaryText)
+                Text(item.secondaryText)
                     .font(.footnote)
                     .foregroundStyle(.white)
             }

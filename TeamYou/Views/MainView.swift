@@ -12,7 +12,7 @@ struct MainView: View {
             SplashView()
                 .opacity(isLaunching ? 1 : 0)
                 .onAppear {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                         withAnimation(.easeIn(duration: 1)) {
                             isLaunching = false
                         }

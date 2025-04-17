@@ -29,7 +29,7 @@ struct WriteStep2View: View {
                         .fontWeight(.medium)
                         .foregroundStyle(.alabaster)
                 }
-                SelectableCardList()
+                SelectableCardList(type: .situation)
             }
             
             Spacer()
