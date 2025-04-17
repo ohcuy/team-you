@@ -6,8 +6,6 @@ struct CustomNavigationBar: View {
     var leftAction: (() -> Void)? = nil
     var rightAction: (() -> Void)? = nil
     
-    @Environment(\.dismiss) private var dismiss
-    
     var body: some View {
         HStack {
             if showLeftButton {
