@@ -2,7 +2,8 @@ import SwiftUI
 
 struct WriteStep4View: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
-    @State var progress = 0.0
+    @Environment(\.modelContext) var modelContext
+    
     @State var content1 = ""
     @State var content2 = ""
     @State var content3 = ""
@@ -88,6 +89,7 @@ struct WriteStep4View: View {
             Spacer()
             
             Button (action: {
+                saveRecord()
                 viewModel.nextStep()
             }) {
                 Text("다음")
@@ -107,6 +109,37 @@ struct WriteStep4View: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
+    }
+    
+    
+    private func saveRecord() {
+        guard let date = viewModel.selectedDate,
+              let situation = viewModel.selectedSituation,
+              let emotion = viewModel.selectedEmotion else {
+            return
+        }
+        
+        let calendar = Calendar.current
+        let month = calendar.component(.month, from: date)
+        let day = calendar.component(.day, from: date)
+        
+        let record = Record(
+            month: month,
+            day: day,
+            situation: situation.emoji + situation.mainText,
+            emotion: emotion.emoji + emotion.mainText,
+            content1: content1,
+            content2: content2,
+            content3: content3
+        )
+        
+        viewModel.content1 = content1
+        viewModel.content2 = content2
+        viewModel.content3 = content3
+        
+        modelContext.insert(record)
+        print(record)
+        viewModel.nextStep()
     }
 }
 

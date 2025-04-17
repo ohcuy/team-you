@@ -10,7 +10,9 @@ class WriteFlowViewModel: ObservableObject {
     @Published var selectedDate: Date? = nil
     @Published var selectedSituation: SelectableItem?
     @Published var selectedEmotion: SelectableItem?
-    
+    @Published var content1: String = ""
+    @Published var content2: String = ""
+    @Published var content3: String = ""
     
     let situationList: [SelectableItem] = [
         SelectableItem(emoji: "📚", mainText: "해보려 했는데", secondaryText: "일, 공부, 뭐든 시도했지만 잘 안된 순간들", type: .situation),
@@ -26,12 +28,22 @@ class WriteFlowViewModel: ObservableObject {
         SelectableItem(emoji: "🥲", mainText: "그래도 애썼어요", secondaryText: "실패 속에서도 나를 다독이고 싶었어요", type: .situation)
     ]
     
+    func resetCurrentRecord() {
+        self.selectedSituation = nil
+        self.selectedEmotion = nil
+        self.selectedDate = nil
+        self.content1 = ""
+        self.content2 = ""
+        self.content3 = ""
+    }
+    
     func start() {
         path = [.start]
     }
     
     func close() {
         isPresented = false
+        resetCurrentRecord()
     }
     
     func nextStep() {
