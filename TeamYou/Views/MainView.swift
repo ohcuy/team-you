@@ -2,8 +2,9 @@ import SwiftUI
 
 struct MainView: View {
     @StateObject private var writeVM = WriteFlowViewModel()
-    @State private var year = "2025"
-    @State private var month = "4"
+    @State private var showDateSheet = false
+    @State private var selectedYear = Calendar.current.component(.year, from: Date())
+    @State private var selectedMonth = Calendar.current.component(.month, from: Date())
     @State private var isLaunching = true
     @State private var isShownFullScreenCover = false
     
@@ -35,22 +36,33 @@ struct MainView: View {
                             }
                             .padding(.leading, 20)
                             
-                            HStack(spacing: 8) {
+                            HStack {
                                 Spacer()
-                                
-                                Text("\(year)년 \(month)월")
-                                    .font(.system(size: 20, weight: .semibold))
-                                Image(systemName: "chevron.down")
-                                
+                                Button(action: {
+                                    showDateSheet = true
+                                }) {
+                                    HStack(spacing: 12) {
+                                        Text("\(String(selectedYear))년 \(String(selectedMonth))월")
+                                            .font(.system(size: 20, weight: .semibold))
+                                        Image(systemName: "calendar")
+                                    }
+                                    .foregroundColor(.alabaster)
+                                }
+                                .sheet(isPresented: $showDateSheet) {
+                                    CustomDatePicker(
+                                        selectedYear: $selectedYear,
+                                        selectedMonth: $selectedMonth,
+                                        isPresented: $showDateSheet
+                                    )
+                                }
                                 Spacer()
                             }
-                            .foregroundStyle(.alabaster)
                             
-                            MainRecordList(recordList: Record.sampleData)
+                            MainRecordList(month: selectedMonth)
                                 .padding(.horizontal, 20)
                         }
-                        .padding(.top, 32)
                     }
+                    .padding(.top, 32)
                     
                     VStack {
                         Button(action: {
