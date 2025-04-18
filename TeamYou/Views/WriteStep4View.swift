@@ -36,53 +36,74 @@ struct WriteStep4View: View {
                 .foregroundStyle(.alabaster)
                 
                 VStack(alignment: .leading, spacing: 24) {
-                    TextField(
-                        "",
-                        text: $content1,
-                        prompt: Text("오늘 어떤 일이 있었나요?")
-                            .foregroundColor(.gray4)
-                    )
-                    .font(.system(size: 14))
-                    .foregroundStyle(.alabaster)
-                    .lineSpacing(14)
-                    .padding(.top, 12)
-                    .padding(.bottom, 12)
-                    .padding(.horizontal, 12)
-                    .frame(maxWidth: .infinity, minHeight: 120, alignment: .topLeading)
-                    .background(.gray3)
-                    .cornerRadius(8)
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(.gray3)
+                            .frame(maxWidth: .infinity, maxHeight: 120)
+                        
+                        TextEditor(text: $content1)
+                            .foregroundColor(.alabaster)
+                            .font(.system(size: 14))
+                            .padding(.top, 4)
+                            .padding(.leading, 8)
+                            .background(.gray3)
+                            .frame(height: 120)
+                            .scrollContentBackground(.hidden)
+                        
+                        if content1.isEmpty {
+                            Text("오늘 어떤 일이 있었나요?")
+                                .font(.system(size: 14))
+                                .foregroundColor(.gray4)
+                                .padding(12)
+                        }
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                     
-                    TextField(
-                        "",
-                        text: $content2,
-                        prompt: Text("이 실패를 통해 무엇을 배웠나요?")
-                            .foregroundColor(.gray4)
-                    )
-                    .font(.system(size: 14))
-                    .foregroundStyle(.alabaster)
-                    .lineSpacing(14)
-                    .padding(.top, 12)
-                    .padding(.bottom, 12)
-                    .padding(.horizontal, 12)
-                    .frame(maxWidth: .infinity, minHeight: 120, alignment: .topLeading)
-                    .background(.gray3)
-                    .cornerRadius(8)
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(.gray3)
+                            .frame(maxWidth: .infinity, maxHeight: 120)
+                        
+                        TextEditor(text: $content2)
+                            .foregroundColor(.alabaster)
+                            .font(.system(size: 14))
+                            .padding(.top, 4)
+                            .padding(.leading, 8)
+                            .background(.gray3)
+                            .frame(height: 120)
+                            .scrollContentBackground(.hidden)
+                        
+                        if content2.isEmpty {
+                            Text("이 실패를 통해 무엇을 배웠나요?")
+                                .font(.system(size: 14))
+                                .foregroundColor(.gray4)
+                                .padding(12)
+                        }
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                     
-                    TextField(
-                        "",
-                        text: $content3,
-                        prompt: Text("다시 시도한다면 어떻게 해보고 싶나요?")
-                            .foregroundColor(.gray4)
-                    )
-                    .font(.system(size: 14))
-                    .foregroundStyle(.alabaster)
-                    .lineSpacing(14)
-                    .padding(.top, 12)
-                    .padding(.bottom, 12)
-                    .padding(.horizontal, 12)
-                    .frame(maxWidth: .infinity, minHeight: 120, alignment: .topLeading)
-                    .background(.gray3)
-                    .cornerRadius(8)
+                    ZStack(alignment: .topLeading) {
+                        RoundedRectangle(cornerRadius: 8)
+                            .foregroundColor(.gray3)
+                            .frame(maxWidth: .infinity, maxHeight: 120)
+                        
+                        TextEditor(text: $content3)
+                            .foregroundColor(.alabaster)
+                            .font(.system(size: 14))
+                            .padding(.top, 4)
+                            .padding(.leading, 8)
+                            .background(.gray3)
+                            .frame(height: 120)
+                            .scrollContentBackground(.hidden)
+                        
+                        if content3.isEmpty {
+                            Text("다시 시도한다면 어떻게 해보고 싶나요?")
+                                .font(.system(size: 14))
+                                .foregroundColor(.gray4)
+                                .padding(12)
+                        }
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 8))
                 }
             }
             
