@@ -8,7 +8,7 @@ struct MainRecordList: View {
     
     @Query private var recordList: [Record]
     @State private var selectedRecord: Record?
-
+    
     init(month: Int) {
         self.month = month
         _recordList = Query(filter: #Predicate<Record> { $0.month == month }, sort: \.day)
@@ -23,15 +23,15 @@ struct MainRecordList: View {
             VStack(alignment: .leading) {
                 if recordList.isEmpty {
                     HStack(alignment: .center) {
+                        Spacer()
                         Text("아직 기록을 작성하지 않았어요 🥲")
                             .foregroundStyle(.white)
+                        Spacer()
                     }
-                    .frame(maxWidth: .infinity, alignment: .center)
-                    .background(.gray1)
                 } else {
                     ForEach(groupedRecords.keys.sorted(), id: \.self) { day in
                         VStack(alignment: .leading) {
-                            Text("\(month)월 \(day)일의 기록")
+                            Text("\(month)월 \(day)일")
                                 .foregroundColor(.alabaster)
                                 .font(.system(size: 18, weight: .medium))
                                 .padding(.vertical, 8)

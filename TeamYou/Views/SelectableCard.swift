@@ -12,11 +12,12 @@ struct SelectableCard: View {
             VStack(alignment: .leading) {
                 Text(item.mainText)
                     .font(.callout)
-                    .foregroundStyle(isSelected ? Color.gray1 : Color.alabaster)
-                    .fontWeight(.semibold)
+                    .fontWeight(.medium)
+                    .foregroundStyle(isSelected ? .gray1 : .alabaster)
                 Text(item.secondaryText)
                     .font(.footnote)
-                    .foregroundStyle(isSelected ? Color.gray1 : Color.alabaster)
+                    .fontWeight(.light)
+                    .foregroundStyle(isSelected ? .gray1 : .alabaster)
             }
         }
         .padding(.horizontal, 16)

@@ -41,8 +41,8 @@ struct WriteStep3View: View {
                     .bold()
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(viewModel.selectedEmotion == nil ? Color.gray4 : Color.gray1)
-                    .background(viewModel.selectedEmotion == nil ? Color.gray3 : Color.accent)
+                    .foregroundColor(viewModel.selectedEmotion == nil ? .gray4 : .gray1)
+                    .background(viewModel.selectedEmotion == nil ? .gray3 : .accent)
                     .cornerRadius(48)
             }
             .disabled(viewModel.selectedEmotion == nil)

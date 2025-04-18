@@ -22,7 +22,7 @@ struct WriteStep4View: View {
             
             CustomProgressBar(progress: viewModel.progress)
             
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 16) {
                 HStack(alignment: .center) {
                     Text(formattedDate(viewModel.selectedDate ?? Date()))
                     
@@ -33,6 +33,7 @@ struct WriteStep4View: View {
                         Text("\(viewModel.selectedEmotion?.emoji ?? "")\(viewModel.selectedEmotion?.mainText ?? "")")
                     }
                 }
+                .font(.system(size: 15, weight: .regular))
                 .foregroundStyle(.alabaster)
                 
                 VStack(alignment: .leading, spacing: 24) {
@@ -118,8 +119,8 @@ struct WriteStep4View: View {
                     .bold()
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(content1.isEmpty || content2.isEmpty || content3.isEmpty ? Color.gray4 : Color.gray1)
-                    .background(content1.isEmpty || content2.isEmpty || content3.isEmpty ? Color.gray3 : Color.accent)
+                    .foregroundColor(content1.isEmpty || content2.isEmpty || content3.isEmpty ? .gray4 : .gray1)
+                    .background(content1.isEmpty || content2.isEmpty || content3.isEmpty ? .gray3 : .accent)
                     .cornerRadius(48)
             }
             .disabled(content1.isEmpty || content2.isEmpty || content3.isEmpty)

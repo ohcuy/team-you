@@ -4,7 +4,7 @@ struct WriteStep1View: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
     @State var hasSelectedDate = false
     @State var date = Date()
-
+    
     var body: some View {
         VStack {
             CustomNavigationBar(
@@ -59,8 +59,9 @@ struct WriteStep1View: View {
                     .bold()
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(!hasSelectedDate ? Color.gray4 : Color.gray1)
-                    .background(!hasSelectedDate ? Color.gray3 : Color.accent)                    .cornerRadius(48)
+                    .foregroundColor(!hasSelectedDate ? .gray4 : .gray1)
+                    .background(!hasSelectedDate ? .gray3 : .accent)
+                    .cornerRadius(48)
             }
             .disabled(!hasSelectedDate)
             .padding(.top, 12)

@@ -2,7 +2,7 @@ import SwiftUI
 
 struct WriteStep2View: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
-
+    
     var body: some View {
         VStack {
             CustomNavigationBar(
@@ -41,8 +41,8 @@ struct WriteStep2View: View {
                     .bold()
                     .padding(.vertical, 16)
                     .frame(maxWidth: .infinity)
-                    .foregroundColor(viewModel.selectedSituation == nil ? Color.gray4 : Color.gray1)
-                    .background(viewModel.selectedSituation == nil ? Color.gray3 : Color.accent)
+                    .foregroundColor(viewModel.selectedSituation == nil ? .gray4 : .gray1)
+                    .background(viewModel.selectedSituation == nil ? .gray3 : .accent)
                     .cornerRadius(48)
             }
             .disabled(viewModel.selectedSituation == nil)
