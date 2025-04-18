@@ -41,7 +41,7 @@ struct ShareImage: View {
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
                             .fixedSize(horizontal: false, vertical: true)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .frame(alignment: .topLeading)
                             .padding(4)
                             .background(.alabaster)
                     }
@@ -54,7 +54,7 @@ struct ShareImage: View {
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
                             .fixedSize(horizontal: false, vertical: true)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .frame(alignment: .topLeading)
                             .padding(4)
                             .background(.alabaster)
                     }
@@ -66,7 +66,7 @@ struct ShareImage: View {
                             .font(.system(size: 14, weight: .semibold))
                             .foregroundStyle(.gray1)
                             .fixedSize(horizontal: false, vertical: true)
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
+                            .frame(alignment: .topLeading)
                             .padding(4)
                             .background(.alabaster)
                     }
