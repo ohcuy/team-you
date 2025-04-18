@@ -14,6 +14,21 @@ class WriteFlowViewModel: ObservableObject {
     @Published var content2: String = ""
     @Published var content3: String = ""
     
+    var progress: Double {
+        let progressSteps = 5.0
+
+        let stepIndex = switch path.last {
+        case .step1: 1.0
+        case .step2: 2.0
+        case .step3: 3.0
+        case .step4: 4.0
+        case .finish: 5.0
+        default: 0.0
+        }
+
+        return stepIndex / progressSteps
+    }
+    
     let situationList: [SelectableItem] = [
         SelectableItem(emoji: "📚", mainText: "해보려 했는데", secondaryText: "일, 공부, 뭐든 시도했지만 잘 안된 순간들", type: .situation),
         SelectableItem(emoji: "🗣️", mainText: "말이 꼬였어", secondaryText: "소통 실수, 관계의 엇갈림", type: .situation),

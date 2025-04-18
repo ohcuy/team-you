@@ -20,7 +20,7 @@ struct WriteStep4View: View {
                     viewModel.close()
                 })
             
-            CustomProgressBar()
+            CustomProgressBar(progress: viewModel.progress)
             
             VStack(alignment: .leading, spacing: 12) {
                 HStack(alignment: .center) {

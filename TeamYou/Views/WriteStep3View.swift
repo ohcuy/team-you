@@ -2,7 +2,6 @@ import SwiftUI
 
 struct WriteStep3View: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
-    @State var progress = 0.0
     
     var body: some View {
         VStack {
@@ -16,7 +15,7 @@ struct WriteStep3View: View {
                     viewModel.close()
                 })
             
-            CustomProgressBar()
+            CustomProgressBar(progress: viewModel.progress)
             
             VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading, spacing: 4) {

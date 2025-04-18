@@ -4,8 +4,7 @@ struct WriteStep1View: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
     @State var hasSelectedDate = false
     @State var date = Date()
-    @State var progress = 0.0
-    
+
     var body: some View {
         VStack {
             CustomNavigationBar(
@@ -14,7 +13,7 @@ struct WriteStep1View: View {
                     viewModel.close()
                 })
             
-            CustomProgressBar()
+            CustomProgressBar(progress: viewModel.progress)
             
             VStack(alignment: .leading, spacing: 24) {
                 VStack(alignment: .leading) {
