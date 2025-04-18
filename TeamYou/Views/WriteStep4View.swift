@@ -138,8 +138,6 @@ struct WriteStep4View: View {
         viewModel.content3 = content3
         
         modelContext.insert(record)
-        print(record)
-        viewModel.nextStep()
     }
 }
 
