@@ -78,9 +78,4 @@ struct RecordDetailView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(.gray1)
     }
-    
-    func onDelete() {
-
-    }
-
 }
