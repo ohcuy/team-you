@@ -4,6 +4,11 @@ import SwiftData
 struct RecordDetailView: View {
     var record: Record
     
+    @Environment(\.modelContext) private var modelContext
+    @Environment(\.dismiss) private var dismiss
+    
+    @State private var showAlert = false
+    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
@@ -43,6 +48,7 @@ struct RecordDetailView: View {
                 
                 VStack {
                     Button(action: {
+                        showAlert = true
                     }) {
                         Text("삭제")
                             .font(.body)
@@ -56,6 +62,15 @@ struct RecordDetailView: View {
                     .padding(.top, 12)
                     .frame(maxWidth: .infinity)
                     .background(.gray1)
+                    .alert("정말 삭제할까요?", isPresented: $showAlert) {
+                        Button("삭제", role: .destructive) {
+                            modelContext.delete(record)
+                            dismiss()
+                        }
+                        Button("취소", role: .cancel) { }
+                    } message: {
+                        Text("이 기록은 다시 되돌릴 수 없어요.")
+                    }
                 }
             }
         }
@@ -63,4 +78,9 @@ struct RecordDetailView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(.gray1)
     }
+    
+    func onDelete() {
+
+    }
+
 }
