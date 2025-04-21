@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CAD6755E2DB63918009926A5 /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CAD6755D2DB63918009926A5 /* ConfettiSwiftUI */; };
 		CAF467FA2DAB969400D46335 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = CAF467F92DAB969400D46335 /* Lottie */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAD6755E2DB63918009926A5 /* ConfettiSwiftUI in Frameworks */,
 				CAF467FA2DAB969400D46335 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = TeamYou;
 			packageProductDependencies = (
 				CAF467F92DAB969400D46335 /* Lottie */,
+				CAD6755D2DB63918009926A5 /* ConfettiSwiftUI */,
 			);
 			productName = TeamYou;
 			productReference = CAC16F342DA8F9D300174248 /* TeamYou.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				CAF467F82DAB969400D46335 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				CAD6755C2DB63918009926A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CAC16F352DA8F9D300174248 /* Products */;
@@ -351,6 +355,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		CAD6755C2DB63918009926A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.3;
+			};
+		};
 		CAF467F82DAB969400D46335 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -362,6 +374,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		CAD6755D2DB63918009926A5 /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CAD6755C2DB63918009926A5 /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
+		};
 		CAF467F92DAB969400D46335 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CAF467F82DAB969400D46335 /* XCRemoteSwiftPackageReference "lottie-ios" */;
