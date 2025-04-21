@@ -26,14 +26,15 @@ struct RecordDetailView: View {
             .padding(.bottom, 16)
             
             VStack(alignment: .leading, spacing: 24) {
-                ForEach([record.content1, record.content2, record.content3], id: \.self) { content in
+                ForEach([record.content1, record.content2, record.content3].indices, id: \.self) { index in
+                    let content = [record.content1, record.content2, record.content3][index]
                     HStack {
                         Text(content)
                             .foregroundStyle(.alabaster)
                             .font(.system(size: 14))
                             .frame(maxWidth:.infinity, alignment: .topLeading)
                     }
-                    .lineSpacing(14)
+                    .lineSpacing(15)
                     .padding(.top, 12)
                     .padding(.bottom, 12)
                     .padding(.horizontal, 12)
