@@ -7,8 +7,8 @@ struct ShareImage: View {
     
     var body: some View {
         VStack {
-            VStack(alignment: .center, spacing: 16 * scale) {
-                VStack(spacing: 8 * scale) {
+            VStack(alignment: .center) {
+                VStack {
                     Text(formattedDate(viewModel.selectedDate ?? Date()))
                         .font(.system(size: 19 * scale, weight: .bold))
                         .foregroundStyle(.accent)
@@ -18,9 +18,7 @@ struct ShareImage: View {
                         .scaledToFit()
                         .frame(width: 240 * scale, height: 120 * scale)
                 }
-                .padding(.vertical, 12 * scale)
-                
-                Spacer()
+                .padding(.vertical, 12 * (scale * 0.75))
                 
                 HStack {
                     VStack(alignment: .leading, spacing: 16 * scale) {
@@ -30,20 +28,20 @@ struct ShareImage: View {
                             
                             HStack(spacing: 8 * scale) {
                                 Text("\(viewModel.selectedSituation?.emoji ?? "")\(viewModel.selectedSituation?.mainText ?? "")")
-                                    .font(.system(size: 11 * scale, weight: .semibold))
+                                    .font(.system(size: 11 * (scale * 0.75), weight: .semibold))
                                     .foregroundStyle(.gray1)
                                     .padding(4 * scale)
                                     .background(.alabaster)
                                 
                                 Text("\(viewModel.selectedEmotion?.emoji ?? "")\(viewModel.selectedEmotion?.mainText ?? "")")
-                                    .font(.system(size: 11 * scale, weight: .semibold))
+                                    .font(.system(size: 11 * (scale * 0.75), weight: .semibold))
                                     .foregroundStyle(.gray1)
                                     .padding(4 * scale)
                                     .background(.alabaster)
                             }
                             
                             Text(viewModel.content1)
-                                .font(.system(size: 11 * scale, weight: .semibold))
+                                .font(.system(size: 11 * (scale * 0.75), weight: .semibold))
                                 .foregroundStyle(.gray1)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(4 * scale)
@@ -55,7 +53,7 @@ struct ShareImage: View {
                                 .font(.system(size: 12 * scale, weight: .bold))
                             
                             Text(viewModel.content2)
-                                .font(.system(size: 11 * scale, weight: .semibold))
+                                .font(.system(size: 11 * (scale * 0.75), weight: .semibold))
                                 .foregroundStyle(.gray1)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(4 * scale)
@@ -67,7 +65,7 @@ struct ShareImage: View {
                                 .font(.system(size: 12 * scale, weight: .bold))
                             
                             Text(viewModel.content3)
-                                .font(.system(size: 11 * scale, weight: .semibold))
+                                .font(.system(size: 11 * (scale * 0.75), weight: .semibold))
                                 .foregroundStyle(.gray1)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .padding(4 * scale)
@@ -83,16 +81,14 @@ struct ShareImage: View {
                 HStack(spacing: 8 * scale) {
                     Image("AppIconWhite")
                         .resizable()
-                        .frame(width: 12 * scale, height: 12 * scale)
+                        .frame(width: 12 * (scale * 0.75), height: 12 * (scale * 0.75))
                     
                     Text("당신의 실패를 응원하는, 실패 응원단")
-                        .font(.system(size: 11 * scale, weight: .regular))
+                        .font(.system(size: 11 * (scale * 0.75), weight: .regular))
                 }
-                
-                Spacer()
             }
-            .padding(.vertical, 12 * scale)
-            .padding(.horizontal, 12 * scale)
+            .padding(.vertical, 14 * (scale * 0.75))
+            .padding(.horizontal, 12 * (scale * 0.75))
             .frame(width: size.width, height: size.height, alignment: .top)
             .background(.gray1)
         }
