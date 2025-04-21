@@ -34,11 +34,11 @@ struct RecordDetailView: View {
                             .font(.system(size: 14))
                             .frame(maxWidth:.infinity, alignment: .topLeading)
                     }
-                    .lineSpacing(15)
+                    .lineSpacing(7)
                     .padding(.top, 12)
                     .padding(.bottom, 12)
                     .padding(.horizontal, 12)
-                    .frame(maxWidth: .infinity, minHeight: 120)
+                    .frame(maxWidth: .infinity, minHeight: 120, alignment: .topLeading)
                     .background(.gray3)
                     .cornerRadius(8)
                 }
