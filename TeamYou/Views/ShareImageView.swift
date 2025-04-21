@@ -1,9 +1,10 @@
 import SwiftUI
+import UIKit
 
 struct ShareImageView: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
-    @State private var isShareSheetOpen = false
-    
+    @State private var shareStatus: String? = nil
+
     var body: some View {
         VStack {
             ScrollView {
@@ -18,13 +19,20 @@ struct ShareImageView: View {
                         VStack(spacing: 4) {
                             Text("오실완! 오늘도 잘 돌아봤어요.")
                                 .font(.system(size: 20, weight: .bold))
-                            Text("원한다면, 이 기록을 인스타그램 스토리로 남겨볼 수도 있어요.")
+                            Text("원한다면, 이 기록을 이미지로 저장할 수 있어요.")
                                 .font(.system(size: 13))
                         }
                         
-                        ShareImage()
+                        let viewSize = CGSize(width: 270, height: 480)
+                        ShareImage(size: viewSize, scale: 1.0)
                             .cornerRadius(4)
                             .shadow(color: .white.opacity(0.2), radius: 16, x: 0, y: 4)
+
+                        if let status = shareStatus {
+                            Text(status)
+                                .font(.caption)
+                                .foregroundColor(.gray4)
+                        }
                     }
                 }
                 .padding(.horizontal, 20)
@@ -32,8 +40,18 @@ struct ShareImageView: View {
             
             VStack {
                 Button(action: {
+                    let exportScale: CGFloat = 4.0
+                    let exportSize = CGSize(width: 270 * exportScale, height: 480 * exportScale)
+                    
+                    let image = ShareImage(size: exportSize, scale: exportScale)
+                        .environmentObject(viewModel)
+                        .snapshot(size: exportSize)
+
+                    UIPasteboard.general.image = image
+                    
+                    shareStatus = "이미지가 클립보드에 복사되었어요!"
                 }) {
-                    Text("공유하기")
+                    Text("이미지 복사하기")
                         .font(.body)
                         .bold()
                         .padding()
