@@ -1,9 +1,11 @@
+import ConfettiSwiftUI
 import SwiftUI
 import UIKit
 
 struct ShareImageView: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
     @State private var shareStatus: String? = nil
+    @State private var trigger: Int = 0
 
     var body: some View {
         VStack {
@@ -27,6 +29,10 @@ struct ShareImageView: View {
                         ShareImage(size: viewSize, scale: 1.0)
                             .cornerRadius(4)
                             .shadow(color: .white.opacity(0.2), radius: 16, x: 0, y: 4)
+                            .confettiCannon(trigger: $trigger, num: 100, openingAngle: Angle(degrees: 0), closingAngle: Angle(degrees: 360), radius: 300)
+                            .onAppear {
+                                trigger += 1
+                            }
 
                         if let status = shareStatus {
                             Text(status)
