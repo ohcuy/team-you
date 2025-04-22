@@ -19,7 +19,6 @@ struct MainRecordList: View {
     }
     
     var body: some View {
-        NavigationStack {
             VStack(alignment: .leading) {
                 if recordList.isEmpty {
                     HStack(alignment: .center) {
@@ -47,7 +46,6 @@ struct MainRecordList: View {
                     }
                 }
             }
-        }
         .background(.gray1)
         .frame(maxWidth: .infinity)
         .navigationDestination(item: $selectedRecord) { record in
