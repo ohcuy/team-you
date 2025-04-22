@@ -21,47 +21,45 @@ struct MainView: View {
                 }
         } else {
             NavigationStack {
-                ZStack(alignment: .bottom) {
-                    ScrollView {
-                        VStack(alignment: .leading, spacing: 32) {
-                            Spacer()
-                            
-                            HStack {
-                                Image("AppIconSmall")
-                                    .imageScale(.large)
-                                Text("실패 응원단")
-                                    .font(.title2)
-                                    .bold()
-                                    .foregroundColor(.accent)
-                            }
-                            .padding(.leading, 20)
-                            
-                            HStack {
-                                Spacer()
-                                Button(action: {
-                                    showDateSheet = true
-                                }) {
-                                    HStack(spacing: 12) {
-                                        Text("\(String(selectedYear))년 \(String(selectedMonth))월")
-                                            .font(.system(size: 20, weight: .semibold))
-                                        Image(systemName: "calendar")
-                                            .fontWeight(.regular)
-                                    }
-                                    .foregroundColor(.alabaster)
-                                }
-                                .sheet(isPresented: $showDateSheet) {
-                                    CustomDatePicker(
-                                        selectedYear: $selectedYear,
-                                        selectedMonth: $selectedMonth,
-                                        isPresented: $showDateSheet
-                                    )
-                                }
-                                Spacer()
-                            }
-                            
-                            MainRecordList(month: selectedMonth)
-                                .padding(.horizontal, 20)
+                VStack {
+                    VStack(alignment: .leading, spacing: 32) {
+                        Spacer()
+                        
+                        HStack {
+                            Image("AppIconSmall")
+                                .imageScale(.large)
+                            Text("실패 응원단")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.accent)
                         }
+                        .padding(.leading, 20)
+                        
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                showDateSheet = true
+                            }) {
+                                HStack(spacing: 12) {
+                                    Text("\(String(selectedYear))년 \(String(selectedMonth))월")
+                                        .font(.system(size: 20, weight: .semibold))
+                                    Image(systemName: "calendar")
+                                        .fontWeight(.regular)
+                                }
+                                .foregroundColor(.alabaster)
+                            }
+                            .sheet(isPresented: $showDateSheet) {
+                                CustomDatePicker(
+                                    selectedYear: $selectedYear,
+                                    selectedMonth: $selectedMonth,
+                                    isPresented: $showDateSheet
+                                )
+                            }
+                            Spacer()
+                        }
+                        
+                        MainRecordList(month: selectedMonth)
+                            .padding(.horizontal, 20)
                     }
                     .padding(.top, 32)
                     

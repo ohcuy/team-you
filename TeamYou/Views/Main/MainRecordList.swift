@@ -19,7 +19,8 @@ struct MainRecordList: View {
     }
     
     var body: some View {
-            VStack(alignment: .leading) {
+        ScrollView(showsIndicators: false) {
+            VStack(alignment: .leading, spacing: 24) {
                 if recordList.isEmpty {
                     HStack(alignment: .center) {
                         Spacer()
@@ -33,11 +34,11 @@ struct MainRecordList: View {
                             Text("\(month)월 \(day)일")
                                 .foregroundColor(.alabaster)
                                 .font(.system(size: 18, weight: .medium))
-                                .padding(.vertical, 8)
+                                .padding(.bottom, 16)
                             
                             ForEach(groupedRecords[day] ?? [], id: \.id) { record in
                                 RecordCard(category: record.situation, emotion: record.emotion)
-                                    .padding(.bottom, 8)
+                                    .padding(.bottom, 12)
                                     .onTapGesture {
                                         selectedRecord = record
                                     }
@@ -46,10 +47,11 @@ struct MainRecordList: View {
                     }
                 }
             }
-        .background(.gray1)
-        .frame(maxWidth: .infinity)
-        .navigationDestination(item: $selectedRecord) { record in
-            RecordDetailView(record: record)
+            .background(.gray1)
+            .frame(maxWidth: .infinity)
+            .navigationDestination(item: $selectedRecord) { record in
+                RecordDetailView(record: record)
+            }
         }
     }
 }
