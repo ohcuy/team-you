@@ -38,7 +38,7 @@ struct RecordDetailView: View {
                     .padding(.top, 12)
                     .padding(.bottom, 12)
                     .padding(.horizontal, 12)
-                    .frame(maxWidth: .infinity, minHeight: 120, alignment: .topLeading)
+                    .frame(height: 140, alignment: .topLeading)
                     .background(.gray3)
                     .cornerRadius(8)
                 }
