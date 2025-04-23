@@ -4,9 +4,9 @@ import UIKit
 
 struct ShareImageView: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
-    @State private var shareStatus: String? = nil
+    @State private var toastMessage: String? = nil
     @State private var trigger: Int = 0
-
+    
     var body: some View {
         VStack {
             ScrollView {
@@ -33,12 +33,6 @@ struct ShareImageView: View {
                             .onAppear {
                                 trigger += 1
                             }
-
-                        if let status = shareStatus {
-                            Text(status)
-                                .font(.caption)
-                                .foregroundColor(.gray4)
-                        }
                     }
                 }
                 .padding(.horizontal, 20)
@@ -52,10 +46,10 @@ struct ShareImageView: View {
                     let image = ShareImage(size: exportSize, scale: exportScale)
                         .environmentObject(viewModel)
                         .snapshot(size: exportSize)
-
+                    
                     UIPasteboard.general.image = image
                     
-                    shareStatus = "이미지가 클립보드에 복사되었어요!"
+                    showToast("이미지가 클립보드에 복사되었어요!")
                 }) {
                     Text("이미지 복사하기")
                         .font(.body)
@@ -75,5 +69,30 @@ struct ShareImageView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
+        .overlay(
+            Group {
+                if let toast = toastMessage {
+                    Text(toast)
+                        .font(.footnote)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 16)
+                        .background(.gray3.opacity(0.8))
+                        .foregroundColor(.alabaster)
+                        .cornerRadius(8)
+                        .transition(.opacity)
+                        .padding(.bottom, 80)
+                }
+            },
+            alignment: .bottom
+        )
+    }
+    
+    func showToast(_ message: String) {
+        toastMessage = message
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation {
+                toastMessage = nil
+            }
+        }
     }
 }
