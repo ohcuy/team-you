@@ -2,8 +2,9 @@ import SwiftUI
 
 struct WriteStep1View: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
-    @State var hasSelectedDate = false
-    @State var date = Date()
+    @State private var toastMessage: String? = nil
+    @State private var hasSelectedDate = false
+    @State private var date = Date()
     
     var body: some View {
         VStack {
@@ -36,8 +37,15 @@ struct WriteStep1View: View {
                             viewModel.selectedDate ?? Date()
                         },
                         set: { newDate in
-                            viewModel.selectedDate = newDate
-                            hasSelectedDate = true
+                            if newDate > Date() {
+                                showToast("오늘 이후의 날짜는 선택할 수 없어요.")
+                                hasSelectedDate = false
+                                let generator = UIImpactFeedbackGenerator(style: .medium)
+                                generator.impactOccurred()
+                            } else {
+                                viewModel.selectedDate = newDate
+                                hasSelectedDate = true
+                            }
                         }
                     ),
                     displayedComponents: [.date]
@@ -71,5 +79,30 @@ struct WriteStep1View: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
+        .overlay(
+            Group {
+                if let toast = toastMessage {
+                    Text(toast)
+                        .font(.footnote)
+                        .padding(.vertical, 8)
+                        .padding(.horizontal, 16)
+                        .background(.gray3.opacity(0.8))
+                        .foregroundColor(.alabaster)
+                        .cornerRadius(8)
+                        .transition(.opacity)
+                        .padding(.bottom, 80)
+                }
+            },
+            alignment: .bottom
+        )
+    }
+    
+    func showToast(_ message: String) {
+        toastMessage = message
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            withAnimation {
+                toastMessage = nil
+            }
+        }
     }
 }
