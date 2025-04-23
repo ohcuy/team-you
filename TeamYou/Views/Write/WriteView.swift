@@ -6,7 +6,7 @@ enum WriteStep: Hashable {
 
 struct WriteView: View {
     @EnvironmentObject var viewModel: WriteFlowViewModel
-
+    
     var body: some View {
         NavigationStack(path: $viewModel.path) {
             WriteStartView()

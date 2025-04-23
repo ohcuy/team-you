@@ -106,7 +106,7 @@ struct RecordDetailView: View {
                     Text("이 기록은 다시 되돌릴 수 없어요.")
                 }
             }
-
+            
             
         }
     }

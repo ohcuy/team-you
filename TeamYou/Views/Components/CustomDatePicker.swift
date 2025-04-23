@@ -4,9 +4,9 @@ struct CustomDatePicker: View {
     @Binding var selectedYear: Int
     @Binding var selectedMonth: Int
     @Binding var isPresented: Bool
-
+    
     @State private var selectedDate = Date()
-
+    
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -19,14 +19,14 @@ struct CustomDatePicker: View {
                 .font(.headline)
                 .padding()
             }
-
+            
             Divider()
-
+            
             DatePicker("", selection: $selectedDate, displayedComponents: [.date])
                 .datePickerStyle(.wheel)
                 .labelsHidden()
                 .frame(maxHeight: 250)
-
+            
             Spacer()
         }
         .onAppear {

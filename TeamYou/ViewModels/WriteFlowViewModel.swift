@@ -16,7 +16,7 @@ class WriteFlowViewModel: ObservableObject {
     
     var progress: Double {
         let progressSteps = 5.0
-
+        
         let stepIndex = switch path.last {
         case .step1: 1.0
         case .step2: 2.0
@@ -25,7 +25,7 @@ class WriteFlowViewModel: ObservableObject {
         case .finish: 5.0
         default: 0.0
         }
-
+        
         return stepIndex / progressSteps
     }
     
