@@ -41,7 +41,7 @@ struct WriteStep4View: View {
                 
                 VStack(spacing: 24) {
                     ForEach(0..<3, id: \.self) { index in
-                        feedbackTextEditor(
+                        customTextEditor(
                             title: index == 0 ? "오늘 어떤 일이 있었나요?" :
                                 index == 1 ? "이 실패를 통해 무엇을 배웠나요?" :
                                 "다시 시도한다면 어떻게 해보고 싶나요?",
@@ -78,7 +78,7 @@ struct WriteStep4View: View {
     }
     
     @ViewBuilder
-    func feedbackTextEditor(title: String, text: Binding<String>, prevCount: Binding<Int>) -> some View {
+    private func customTextEditor(title: String, text: Binding<String>, prevCount: Binding<Int>) -> some View {
         ZStack(alignment: .topLeading) {
             RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(.gray3)
