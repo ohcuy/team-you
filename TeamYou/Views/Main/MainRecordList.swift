@@ -11,7 +11,7 @@ struct MainRecordList: View {
     
     init(month: Int) {
         self.month = month
-        _recordList = Query(filter: #Predicate<Record> { $0.month == month }, sort: \.day)
+        _recordList = Query(filter: #Predicate<Record> { $0.month == month }, sort: [.init(\.day, order: .reverse)])
     }
     
     private var groupedRecords: [Int: [Record]] {
@@ -29,7 +29,7 @@ struct MainRecordList: View {
                         Spacer()
                     }
                 } else {
-                    ForEach(groupedRecords.keys.sorted(), id: \.self) { day in
+                    ForEach(groupedRecords.keys.sorted(by: >), id: \.self) { day in
                         VStack(alignment: .leading) {
                             Text("\(month)월 \(day)일")
                                 .foregroundColor(.alabaster)
