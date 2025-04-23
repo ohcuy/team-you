@@ -29,22 +29,46 @@ struct RecordDetailView: View {
             .padding(.bottom, 16)
             
             VStack(alignment: .leading, spacing: 24) {
-                ForEach([record.content1, record.content2, record.content3].indices, id: \.self) { index in
-                    let content = [record.content1, record.content2, record.content3][index]
-                    HStack {
-                        Text(content)
-                            .foregroundStyle(.alabaster)
-                            .font(.system(size: 14))
-                            .frame(maxWidth:.infinity, alignment: .topLeading)
-                    }
-                    .lineSpacing(7)
-                    .padding(.vertical, 12)
-                    .padding(.horizontal, 12)
-                    .frame(height: 140, alignment: .topLeading)
-                    .background(.gray3)
-                    .cornerRadius(8)
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("오늘 어떤 일이 있었나요?")
+                        .foregroundStyle(.alabaster)
+                        .font(.system(size: 15, weight: .semibold))
+                    
+                    Text(record.content1)
+                        .foregroundStyle(.alabaster)
+                        .font(.system(size: 14))
+                        .frame(maxWidth: .infinity, alignment: .topLeading)
                 }
+                .lineSpacing(4)
+                .frame(height: 140, alignment: .topLeading)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("이 실패를 통해 무엇을 배웠나요?")
+                        .foregroundStyle(.alabaster)
+                        .font(.system(size: 15, weight: .semibold))
+                    
+                    Text(record.content2)
+                        .foregroundStyle(.alabaster)
+                        .font(.system(size: 14))
+                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                }
+                .lineSpacing(4)
+                .frame(height: 140, alignment: .topLeading)
+                
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("다시 시도한다면 어떻게 해보고 싶나요?")
+                        .foregroundStyle(.alabaster)
+                        .font(.system(size: 15, weight: .semibold))
+                    
+                    Text(record.content3)
+                        .foregroundStyle(.alabaster)
+                        .font(.system(size: 14))
+                        .frame(maxWidth: .infinity, alignment: .topLeading)
+                }
+                .lineSpacing(4)
+                .frame(alignment: .topLeading)
             }
+            
         }
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
@@ -62,11 +86,13 @@ struct RecordDetailView: View {
                 }
             }
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button(
-                    action: {
+                Menu {
+                    Button {
                         showAlert = true
-                    })
-                {
+                    } label: {
+                        Label("삭제", systemImage: "trash")
+                    }
+                } label: {
                     Image(systemName: "ellipsis.circle")
                         .foregroundStyle(.alabaster)
                 }
@@ -80,6 +106,8 @@ struct RecordDetailView: View {
                     Text("이 기록은 다시 되돌릴 수 없어요.")
                 }
             }
+
+            
         }
     }
 }
