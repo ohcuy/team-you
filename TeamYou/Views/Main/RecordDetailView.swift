@@ -15,6 +15,9 @@ struct RecordDetailView: View {
                 Text("\(record.month)월 \(record.day)일")
                     .foregroundColor(.alabaster)
                     .font(.system(size: 16, weight: .medium))
+                
+                Spacer()
+                
                 Text(record.situation)
                     .foregroundColor(.alabaster)
                     .font(.system(size: 15, weight: .medium))
@@ -35,48 +38,48 @@ struct RecordDetailView: View {
                             .frame(maxWidth:.infinity, alignment: .topLeading)
                     }
                     .lineSpacing(7)
-                    .padding(.top, 12)
-                    .padding(.bottom, 12)
+                    .padding(.vertical, 12)
                     .padding(.horizontal, 12)
                     .frame(height: 140, alignment: .topLeading)
                     .background(.gray3)
                     .cornerRadius(8)
                 }
             }
-            
-            VStack {
-                Spacer()
-                
-                VStack {
-                    Button(action: {
-                        showAlert = true
-                    }) {
-                        Text("삭제")
-                            .font(.body)
-                            .bold()
-                            .padding(.vertical, 16)
-                            .padding(.horizontal, 48)
-                            .foregroundColor(.alabaster)
-                            .background(.gray3)
-                            .cornerRadius(48)
-                    }
-                    .padding(.top, 12)
-                    .frame(maxWidth: .infinity)
-                    .background(.gray1)
-                    .alert("정말 삭제할까요?", isPresented: $showAlert) {
-                        Button("삭제", role: .destructive) {
-                            modelContext.delete(record)
-                            dismiss()
-                        }
-                        Button("취소", role: .cancel) { }
-                    } message: {
-                        Text("이 기록은 다시 되돌릴 수 없어요.")
-                    }
-                }
-            }
         }
         .padding(.horizontal, 20)
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         .background(.gray1)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(
+                    action: {
+                        dismiss()
+                    })
+                {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.alabaster)
+                }
+            }
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button(
+                    action: {
+                        showAlert = true
+                    })
+                {
+                    Image(systemName: "ellipsis.circle")
+                        .foregroundStyle(.alabaster)
+                }
+                .alert("정말 삭제할까요?", isPresented: $showAlert) {
+                    Button("삭제", role: .destructive) {
+                        modelContext.delete(record)
+                        dismiss()
+                    }
+                    Button("취소", role: .cancel) { }
+                } message: {
+                    Text("이 기록은 다시 되돌릴 수 없어요.")
+                }
+            }
+        }
     }
 }
