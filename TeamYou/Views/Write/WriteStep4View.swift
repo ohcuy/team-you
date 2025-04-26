@@ -75,6 +75,9 @@ struct WriteStep4View: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.gray1)
         .navigationBarBackButtonHidden(true)
+        .onTapGesture {
+            self.endTextEditing()
+        }
     }
     
     @ViewBuilder

@@ -19,4 +19,11 @@ extension View {
             view?.drawHierarchy(in: view!.bounds, afterScreenUpdates: true)
         }
     }
+    
+    func endTextEditing() {
+        UIApplication.shared.sendAction(
+            #selector(UIResponder.resignFirstResponder),
+            to: nil, from: nil, for: nil
+        )
+    }
 }
